@@ -44,7 +44,19 @@
                 Clicked="OnClearEntryClicked"/>
 
             </HorizontalStackLayout>
+
+            <ProgressBar
+                x:Name="progressBarRed"
+                Progress="0.0"
+                ProgressColor="Red" />
             
+            <Button
+                x:Name="btnCounter"
+                Text="Click me!"
+                SemanticProperties.Hint="Button for progress bar"
+                Clicked="OnProgressBarClicked"
+                HorizontalOptions="Fill" />
+
         </VerticalStackLayout>
     </ScrollView>
 

@@ -4,6 +4,8 @@
     {
 
         private string _binaryInput = "";
+        int count = 0;
+        double progress = 0.0;
 
         public MainPage()
         {
@@ -54,6 +56,33 @@
                 UpdateDecimalValue();
             }
         }
+
+        private void OnProgressBarClicked(object sender, EventArgs e)
+        {
+            count++;
+
+            // Check if progress has reached or exceeded 1.0
+            if (progressBarRed.Progress == 1.0)
+            {
+                progressBarRed.Progress = 0.0; // Reset progress bar
+                progress = 0.0; // Reset progress tracker
+                btnCounter.Text = "Click me again!";
+                count = 0;
+            }
+            else
+            {
+                // Increment progress and update the progress bar
+                progress += 0.1;
+                progressBarRed.Progress = progress;
+
+                btnCounter.Text = $"Clicked {count} times.";
+            }
+
+            // Announce the button text for accessibility
+            SemanticScreenReader.Announce(btnCounter.Text);
+        }
+
+
     }
 
 }
